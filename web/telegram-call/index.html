@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="color-scheme" content="dark">
+    <title>OpenClaw 哥特电话</title>
+    <link rel="stylesheet" href="./assets/styles.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  </head>
+  <body>
+    <main id="telegram-call-root" class="call-shell" data-state="idle">
+      <section class="call-card" aria-live="polite">
+        <div class="call-topline">
+          <span class="signal-dot" aria-hidden="true"></span>
+          <span id="connection-state">来电</span>
+        </div>
+
+        <div class="call-main">
+          <div class="avatar-frame" aria-hidden="true">
+            <img id="avatar-image" class="avatar-image" alt="" hidden>
+            <div id="avatar-fallback" class="avatar-fallback">OC</div>
+          </div>
+
+          <h1 id="caller-name">OpenClaw</h1>
+          <p id="call-status">Telegram 来电</p>
+
+          <div class="status-line" aria-label="通话状态">
+            <span>连接 <b id="relay-state">待机</b></span>
+            <span>麦克风 <b id="mic-state">未请求</b></span>
+          </div>
+        </div>
+
+        <div class="controls" role="group" aria-label="通话控制">
+          <button id="answer-button" class="control-button answer" type="button" aria-label="接听电话">
+            <span class="button-icon" aria-hidden="true"></span>
+            <span>接听</span>
+          </button>
+          <button id="mute-button" class="control-button secondary" type="button" aria-label="静音麦克风" disabled>
+            <span class="button-icon" aria-hidden="true"></span>
+            <span>静音</span>
+          </button>
+          <button id="hangup-button" class="control-button hangup" type="button" aria-label="拒绝来电">
+            <span class="button-icon" aria-hidden="true"></span>
+            <span>拒绝</span>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./assets/app.js"></script>
+  </body>
+</html>

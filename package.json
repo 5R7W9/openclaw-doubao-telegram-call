@@ -1,0 +1,61 @@
+{
+  "name": "openclaw-doubao-telegram-call",
+  "version": "0.1.2",
+  "type": "module",
+  "description": "Telegram Mini App realtime phone companion for OpenClaw Talk.",
+  "license": "MIT",
+  "main": "./index.js",
+  "files": [
+    ".env.example",
+    "index.js",
+    "LICENSE",
+    "openclaw.plugin.json",
+    "src/telegram-call/",
+    "src/values.js",
+    "web/telegram-call/",
+    "skills/openclaw-doubao-telegram-call/",
+    "telegram-call.config.example.json",
+    "README.md",
+    "docs/PROJECT_BOUNDARIES.md"
+  ],
+  "exports": {
+    ".": {
+      "default": "./index.js"
+    }
+  },
+  "scripts": {
+    "test": "node --test test/telegram-call/*.test.js"
+  },
+  "dependencies": {
+    "ws": "8.21.0"
+  },
+  "peerDependencies": {
+    "openclaw": ">=2026.6.8"
+  },
+  "peerDependenciesMeta": {
+    "openclaw": {
+      "optional": true
+    }
+  },
+  "openclaw": {
+    "extensions": [
+      "./index.js"
+    ],
+    "runtimeExtensions": [
+      "./index.js"
+    ],
+    "tools": [
+      "create_telegram_call_link",
+      "send_telegram_call_card",
+      "list_telegram_call_profiles"
+    ],
+    "compat": {
+      "pluginApi": ">=2026.6.8",
+      "minGatewayVersion": "2026.6.8"
+    },
+    "build": {
+      "openclawVersion": "2026.6.8",
+      "pluginSdkVersion": "2026.6.8"
+    }
+  }
+}

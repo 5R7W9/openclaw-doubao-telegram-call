@@ -1,0 +1,376 @@
+:root {
+  color-scheme: dark;
+  --ink: #fff;
+  --paper: #000;
+  --dim: #a0a0a0;
+  --frame: 2px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+  background: var(--paper);
+}
+
+body {
+  min-height: 100dvh;
+  color: var(--ink);
+  font-family: "Songti SC", "Noto Serif CJK SC", "SimSun", serif;
+  letter-spacing: 0;
+  overflow: hidden;
+}
+
+button {
+  font: inherit;
+}
+
+.call-shell {
+  width: min(100%, 430px);
+  min-height: 100dvh;
+  margin: 0 auto;
+}
+
+.call-card {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 12px;
+  width: 100%;
+  min-height: 100dvh;
+  padding: max(10px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background: var(--paper);
+}
+
+.call-topline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 30px;
+  padding: 4px 10px;
+  border: var(--frame) solid var(--ink);
+  color: var(--paper);
+  background: var(--ink);
+  font-size: 0.86rem;
+  line-height: 1.15;
+}
+
+.signal-dot {
+  width: 9px;
+  height: 9px;
+  background: var(--paper);
+  transform: rotate(45deg);
+}
+
+.call-main {
+  display: grid;
+  min-height: 0;
+  place-items: center;
+  justify-items: center;
+  gap: 10px;
+  padding-block: 8px;
+}
+
+.avatar-frame {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: clamp(98px, 25dvh, 138px);
+  height: clamp(124px, 32dvh, 172px);
+  padding: 9px;
+  border: var(--frame) solid var(--ink);
+  background: var(--paper);
+  clip-path: polygon(50% 0, 100% 25%, 100% 100%, 0 100%, 0 25%);
+}
+
+.avatar-frame::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: var(--frame) solid var(--ink);
+  clip-path: polygon(50% 0, 100% 27%, 100% 100%, 0 100%, 0 27%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.avatar-image,
+.avatar-fallback {
+  width: 100%;
+  height: 100%;
+  border: var(--frame) solid var(--ink);
+  clip-path: polygon(50% 0, 100% 25%, 100% 100%, 0 100%, 0 25%);
+}
+
+.avatar-image {
+  display: block;
+  object-fit: cover;
+  background: var(--paper);
+}
+
+.avatar-fallback {
+  display: grid;
+  place-items: center;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: Georgia, "Songti SC", "Noto Serif CJK SC", serif;
+  font-size: clamp(1.9rem, 8dvh, 2.7rem);
+  line-height: 1;
+}
+
+h1,
+p {
+  margin: 0;
+  text-align: center;
+}
+
+h1 {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  font-size: clamp(1.65rem, 7dvh, 2.65rem);
+  line-height: 1.05;
+}
+
+#call-status {
+  max-width: 100%;
+  min-height: 22px;
+  color: var(--dim);
+  font-size: 0.92rem;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.status-line {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 10px;
+  min-height: 22px;
+  color: var(--dim);
+  font-size: 0.74rem;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.status-line b {
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.controls {
+  position: sticky;
+  bottom: max(8px, env(safe-area-inset-bottom));
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+  padding-top: 6px;
+  background: var(--paper);
+}
+
+.control-button {
+  display: grid;
+  gap: 4px;
+  justify-items: center;
+  min-width: 0;
+  min-height: 58px;
+  padding: 8px 4px 7px;
+  border: var(--frame) solid var(--ink);
+  border-radius: 0;
+  color: var(--ink);
+  background: var(--paper);
+  cursor: pointer;
+  clip-path: polygon(50% 0, 100% 10px, 100% 100%, 0 100%, 0 10px);
+  font-size: 0.84rem;
+  line-height: 1.1;
+}
+
+.control-button:focus-visible {
+  outline: var(--frame) solid var(--ink);
+  outline-offset: 3px;
+}
+
+.control-button:disabled {
+  cursor: not-allowed;
+  color: var(--dim);
+  background: var(--paper);
+}
+
+.button-icon {
+  position: relative;
+  display: block;
+  width: 24px;
+  height: 24px;
+  border: var(--frame) solid currentColor;
+}
+
+.button-icon::before,
+.button-icon::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+}
+
+.answer {
+  color: var(--paper);
+  background: var(--ink);
+}
+
+.answer .button-icon::before {
+  left: 5px;
+  top: 7px;
+  width: 14px;
+  height: 10px;
+  border: var(--frame) solid currentColor;
+  border-top: 0;
+  background: transparent;
+}
+
+.answer .button-icon::after {
+  left: 8px;
+  top: 5px;
+  width: 8px;
+  height: var(--frame);
+}
+
+.secondary .button-icon::before {
+  left: 7px;
+  top: 4px;
+  width: 7px;
+  height: 11px;
+  border: var(--frame) solid currentColor;
+  background: transparent;
+}
+
+.secondary .button-icon::after {
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  height: var(--frame);
+}
+
+.secondary[aria-pressed="true"] {
+  color: var(--paper);
+  background: var(--ink);
+}
+
+.secondary[aria-pressed="true"] .button-icon::after {
+  left: 4px;
+  right: 4px;
+  top: 11px;
+  bottom: auto;
+  height: var(--frame);
+  transform: rotate(-45deg);
+}
+
+.hangup .button-icon::before,
+.hangup .button-icon::after {
+  left: 5px;
+  right: 5px;
+  top: 11px;
+  height: var(--frame);
+}
+
+.hangup .button-icon::before {
+  transform: rotate(45deg);
+}
+
+.hangup .button-icon::after {
+  transform: rotate(-45deg);
+}
+
+.call-shell[data-state="connected"] .signal-dot {
+  animation: none;
+}
+
+.call-shell[data-state="idle"] .avatar-frame {
+  animation: ringPulse 1.4s steps(2, end) infinite;
+}
+
+.call-shell[data-state="idle"] .signal-dot {
+  animation: signalPulse 1.4s steps(2, end) infinite;
+}
+
+.call-shell[data-state="error"] .call-topline,
+.call-shell[data-state="ended"] .call-topline {
+  color: var(--ink);
+  background: var(--paper);
+}
+
+@keyframes ringPulse {
+  0%,
+  100% {
+    outline: 0 solid var(--ink);
+  }
+
+  50% {
+    outline: 6px solid var(--ink);
+    outline-offset: 3px;
+  }
+}
+
+@keyframes signalPulse {
+  0%,
+  100% {
+    transform: rotate(45deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(45deg) scale(1.5);
+  }
+}
+
+@media (max-height: 640px) {
+  .call-card {
+    gap: 8px;
+    padding-top: max(8px, env(safe-area-inset-top));
+    padding-bottom: max(8px, env(safe-area-inset-bottom));
+  }
+
+  .call-main {
+    gap: 7px;
+    padding-block: 3px;
+  }
+
+  .avatar-frame {
+    width: 92px;
+    height: 116px;
+    padding: 7px;
+  }
+
+  h1 {
+    font-size: 1.52rem;
+  }
+
+  #call-status {
+    font-size: 0.84rem;
+  }
+
+  .status-line {
+    font-size: 0.68rem;
+  }
+
+  .control-button {
+    min-height: 52px;
+    font-size: 0.78rem;
+  }
+
+  .button-icon {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .call-shell[data-state="idle"] .avatar-frame,
+  .call-shell[data-state="idle"] .signal-dot {
+    animation: none;
+  }
+}

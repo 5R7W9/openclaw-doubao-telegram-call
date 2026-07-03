@@ -1,0 +1,224 @@
+{
+  "id": "doubao-telegram-call",
+  "name": "Doubao Telegram Call",
+  "description": "Telegram Mini App realtime phone companion for OpenClaw Talk.",
+  "version": "0.1.2",
+  "activation": {
+    "onStartup": true
+  },
+  "enabledByDefault": true,
+  "skills": [
+    "skills/openclaw-doubao-telegram-call"
+  ],
+  "setup": {
+    "envVars": [
+      "TELEGRAM_CALL_PUBLIC_BASE_URL",
+      "TELEGRAM_CALL_PROFILES_JSON",
+      "TELEGRAM_BOT_TOKEN",
+      "TELEGRAM_CALL_CHAT_ID",
+      "TELEGRAM_CALL_BUTTON_TEXT",
+      "TELEGRAM_CALL_MESSAGE_TEXT",
+      "TELEGRAM_CALL_DISABLE_NOTIFICATION",
+      "TELEGRAM_BOT_API_BASE_URL",
+      "TELEGRAM_CALL_ACCOUNT_ID",
+      "TELEGRAM_CALL_MIRROR_REPLIES",
+      "TELEGRAM_CALL_DEFAULT_PROFILE",
+      "TELEGRAM_CALL_TOKEN_TTL_SECONDS",
+      "TELEGRAM_CALL_AGENT_SPEECH_CHUNK_MODE",
+      "TELEGRAM_CALL_CONFIG_FILE"
+    ]
+  },
+  "contracts": {
+    "tools": [
+      "create_telegram_call_link",
+      "send_telegram_call_card",
+      "list_telegram_call_profiles"
+    ]
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "configFile": {
+        "type": "string"
+      },
+      "defaultProfile": {
+        "type": "string"
+      },
+      "preferFileCallProfiles": {
+        "type": "boolean"
+      },
+      "publicBaseUrl": {
+        "type": "string"
+      },
+      "callTokenTtlSeconds": {
+        "type": "integer",
+        "minimum": 5,
+        "maximum": 300
+      },
+      "agentSpeechChunkMode": {
+        "type": "string",
+        "enum": [
+          "token",
+          "micro",
+          "sentence"
+        ]
+      },
+      "telegramBotToken": {
+        "type": "string"
+      },
+      "telegramChatId": {
+        "type": "string"
+      },
+      "telegramButtonText": {
+        "type": "string"
+      },
+      "telegramMessageText": {
+        "type": "string"
+      },
+      "telegramDisableNotification": {
+        "type": "boolean"
+      },
+      "telegramBotApiBaseUrl": {
+        "type": "string"
+      },
+      "telegramAccountId": {
+        "type": "string"
+      },
+      "telegramMirrorReplies": {
+        "type": "boolean"
+      },
+      "callProfiles": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "avatarUrl": {
+              "type": "string"
+            },
+            "avatar": {
+              "type": "string"
+            },
+            "avatarText": {
+              "type": "string"
+            },
+            "agentId": {
+              "type": "string"
+            },
+            "sessionId": {
+              "type": "string"
+            },
+            "sessionKey": {
+              "type": "string"
+            },
+            "providerId": {
+              "type": "string"
+            },
+            "speaker": {
+              "type": "string"
+            },
+            "voice": {
+              "type": "string"
+            },
+            "model": {
+              "type": "string"
+            },
+            "greeting": {
+              "type": "string"
+            },
+            "instructions": {
+              "type": "string"
+            },
+            "maxDurationSeconds": {
+              "type": "integer",
+              "minimum": 30,
+              "maximum": 14400
+            },
+            "agentSpeechChunkMode": {
+              "type": "string",
+              "enum": [
+                "token",
+                "micro",
+                "sentence"
+              ]
+            },
+            "speechChunkMode": {
+              "type": "string",
+              "enum": [
+                "token",
+                "micro",
+                "sentence"
+              ]
+            },
+            "telegramAccountId": {
+              "type": "string"
+            },
+            "replyAccountId": {
+              "type": "string"
+            },
+            "telegramBotToken": {
+              "type": "string"
+            },
+            "botToken": {
+              "type": "string"
+            },
+            "telegramChatId": {
+              "type": "string"
+            },
+            "chatId": {
+              "type": "string"
+            },
+            "telegramButtonText": {
+              "type": "string"
+            },
+            "buttonText": {
+              "type": "string"
+            },
+            "telegramMessageText": {
+              "type": "string"
+            },
+            "messageText": {
+              "type": "string"
+            },
+            "telegramDisableNotification": {
+              "type": "boolean"
+            },
+            "disableNotification": {
+              "type": "boolean"
+            },
+            "telegramMirrorReplies": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    }
+  },
+  "uiHints": {
+    "publicBaseUrl": {
+      "label": "Public Mini App Base URL",
+      "help": "HTTPS Tailscale MagicDNS URL used by Telegram Mini App buttons."
+    },
+    "configFile": {
+      "label": "Telegram Call Config File",
+      "help": "Optional JSON file in this plugin directory, or an absolute path, containing callProfiles and Mini App settings."
+    },
+    "telegramBotToken": {
+      "label": "Telegram Bot Token",
+      "help": "Bot API token used server-side to send Mini App call cards.",
+      "sensitive": true
+    },
+    "telegramChatId": {
+      "label": "Telegram Chat ID",
+      "help": "Private chat id that receives Mini App call cards."
+    },
+    "telegramAccountId": {
+      "label": "Telegram Account ID",
+      "help": "OpenClaw channels.telegram account id used to send call cards."
+    }
+  }
+}

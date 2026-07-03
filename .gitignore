@@ -1,0 +1,8 @@
+node_modules/
+.env
+.env.*
+!.env.example
+telegram-call.config.json
+output/
+.playwright-cli/
+*.tgz

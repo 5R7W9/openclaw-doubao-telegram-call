@@ -1,0 +1,23 @@
+{
+  "defaultProfile": "main",
+  "preferFileCallProfiles": true,
+  "publicBaseUrl": "https://openclaw-phone.tail0000.ts.net",
+  "callTokenTtlSeconds": 180,
+  "telegramButtonText": "接听",
+  "telegramMirrorReplies": true,
+  "agentSpeechChunkMode": "token",
+  "callProfiles": {
+    "main": {
+      "label": "OpenClaw",
+      "agentId": "main",
+      "sessionId": "main",
+      "sessionKey": "agent:main:main",
+      "speaker": "<doubao-speaker-id>",
+      "model": "1.2.1.1",
+      "telegramAccountId": "default",
+      "avatarText": "OC",
+      "greeting": "Telegram 来电",
+      "instructions": "来自 Telegram 实时通话。"
+    }
+  }
+}
